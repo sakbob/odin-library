@@ -42,9 +42,9 @@ button {
     display: flex;
     flex-wrap: wrap;
     width: 50vw;
-    min-height: fit-content;
+    min-height: 18rem;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 
     background-color: rgba(121, 42, 42, 0.938);
     border: 0.25rem solid black;
@@ -65,15 +65,16 @@ button {
     align-items: center;
     font-weight: bold;;
 
-    background-color: tan;
+    background-color: rgb(255, 227, 189);
     box-shadow: 5px 5px 5px 5px rgb(0, 0, 0, 0.3);
     box-sizing: border-box; 
-
+    
+    border-left: 8px solid rgb(252, 196, 56);
     border-radius: 5px;
 }
 
 .book:hover {
-    background-color: rgb(49, 49, 145);
+    background-color: rgb(70, 70, 189);
     color: white;
     box-sizing: border-box;
 }
@@ -84,6 +85,7 @@ button {
     font-size: 1rem;
     padding: 0;
     margin: 0;
+    border-bottom: solid black 2px;
 }
 
 .button-read {
@@ -94,7 +96,7 @@ button {
     min-width: 1rem;
     padding: 1rem;
     
-    background-color: rgb(255, 80, 80);
+    background-color: rgb(255, 53, 53);
     font-weight: bold;
     border-radius: 1rem;
 }
