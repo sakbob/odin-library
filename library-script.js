@@ -8,7 +8,13 @@ function Book(title, author, pages, hasRead) {
 }
 
 function addBook(book) {
-    myLibrary.concat(book);
+    myLibrary.push(book);
+    addToDOM();
+}
+
+function removeBook() {
+    myLibrary.pop();
+    removeFromDOM();
 }
 
 const bookContainer = document.querySelector(".book-container");
@@ -18,7 +24,8 @@ const dialog = document.querySelector("#book-dialog");
 const cancelDialog = document.querySelector(".button-cancel");
 const form = document.querySelector("form");
 
-myLibrary.forEach(book => {
+function addToDOM() { 
+    const book = myLibrary[myLibrary.length - 1];
     const htmlBook = document.createElement("div");
     htmlBook.classList.add("book");
 
@@ -36,11 +43,21 @@ myLibrary.forEach(book => {
     author.textContent = book.author;
     pages.textContent = book.pages;
 
-    if (hasRead === true) {
+    if (book.hasRead) {
         hasRead.style.backgroundColor = "green";
     }
 
-});
+    htmlBook.appendChild(title);
+    htmlBook.appendChild(author);
+    htmlBook.appendChild(pages);
+    htmlBook.appendChild(hasRead);
+
+    bookContainer.appendChild(htmlBook);
+};
+
+function removeFromDOM() {
+    bookContainer.removeChild(bookContainer.lastChild);
+}
 
 addButton.addEventListener("click", () => {
     dialog.show();
@@ -49,11 +66,15 @@ addButton.addEventListener("click", () => {
 form.addEventListener("submit", () => {
     event.preventDefault();
 
-    let author = document.getElementById("author");
-    let title = document.getElementById("title");
-    let pages = document.getElementById("pages");
-    let hasRead = document.getElementById("has-read");
-    
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+    let hasRead = document.getElementById("has-read").checked;
+
+    const book = new Book(title, author, pages, hasRead);
+    addBook(book);
+
+    form.reset();
     dialog.close();
 });
 
@@ -61,3 +82,12 @@ cancelDialog.addEventListener("click", () => {
     form.reset();
     dialog.close();
 });
+
+delButton.addEventListener("click", () => {
+    if (bookContainer.hasChildNodes()) {
+        removeBook();
+    }
+});
+
+const defaultBook = new Book("Title", "Author", "Pages", false);
+addBook(defaultBook);
