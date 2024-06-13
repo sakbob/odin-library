@@ -9,31 +9,40 @@
     </head>
     <body>
         <div class="button-container">
-            <button class="button-add">Add</button>
-            <button class="button-remove">Remove</button>
+            <button type="button" class="button-add">Add</button>
+            <button type="button" class="button-remove">Remove</button>
         </div>
         <div class="book-container">
-            
+            <div class="book">
+                <h6 class="book-title">Title</h6>
+                <p class="book-author">Author</p>
+                <p class="book-pages">Pages</p>
+                <button type="button" class="button-read"></button>
+            </div>
+            <div class="book"></div>
+            <div class="book"></div>
+            <div class="book"></div>
         </div>
-        <dialog open id="book-dialog">
+        <dialog id="book-dialog">
             <form>
                 <div>
                     <label for="author">Author:</label>
-                    <input type="text" class="author" required/>
+                    <input type="text" id="author" maxlength="15" required/>
                 </div>
                 <div>
                     <label for="title">Title:</label>
-                    <input type="text" class="title" required/>
+                    <input type="text" id="title" maxlength="15" required/>
                 </div>
                 <div>
                     <label for="pages">Pages:</label>
-                    <input type="number" class="pages" required/>
+                    <input type="number" id="pages" max="9999" required/>
                 </div>
                 <div>
                     <label for="has-read">Read:</label>
-                    <input type="checkbox" class="has-read" required/>
+                    <input type="checkbox" id="has-read"/>
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit" class="button-submit">Submit</button>
+                <button type="button" class="button-cancel">Cancel</button>
             </form>
         </dialog>
     </body>
