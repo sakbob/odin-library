@@ -23,6 +23,7 @@ const delButton = document.querySelector(".button-remove");
 const dialog = document.querySelector("#book-dialog");
 const cancelDialog = document.querySelector(".button-cancel");
 const form = document.querySelector("form");
+const readButton = document.querySelectorAll(".button-read");
 
 function addToDOM() { 
     const book = myLibrary[myLibrary.length - 1];
@@ -39,6 +40,8 @@ function addToDOM() {
     pages.classList.add("book-pages");
     hasRead.classList.add("button-read");
 
+    hasRead.type = "button";
+
     title.textContent = book.title;
     author.textContent = book.author;
     pages.textContent = book.pages;
@@ -46,6 +49,15 @@ function addToDOM() {
     if (book.hasRead) {
         hasRead.style.backgroundColor = "green";
     }
+
+    hasRead.addEventListener("click", () => {
+        if (hasRead.style.backgroundColor === "green") {
+            hasRead.style.backgroundColor = "rgb(255, 53, 53)";
+        }
+        else {
+            hasRead.style.backgroundColor = "green";
+        }
+    });
 
     htmlBook.appendChild(title);
     htmlBook.appendChild(author);
